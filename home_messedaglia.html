@@ -29,9 +29,11 @@ html, body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--white);
   color: var(--text);
-  overflow-x: hidden;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
 }
+/* Impedisce scrollbar interna nell'iframe */
+::-webkit-scrollbar { display: none; }
 
 /* ── TICKER ── */
 .ticker-wrap {
@@ -331,14 +333,7 @@ html, body {
 }
 .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
 
-/* ── FOOTER ── */
-footer {
-  background: var(--text); color: rgba(255,255,255,0.45);
-  text-align: center; padding: 2rem 1.5rem;
-  font-size: 0.76rem; line-height:1.9;
-}
-footer strong { color: rgba(255,255,255,0.8); font-weight:600; }
-footer a { color: var(--violet-light); text-decoration:none; }
+/* footer css rimosso */
 
 /* ── ANIMAZIONI ── */
 @keyframes fadeUp {
@@ -527,7 +522,7 @@ footer a { color: var(--violet-light); text-decoration:none; }
 </div>
 
 <!-- CTA STRIP -->
-<div style="background:white; padding: clamp(2rem,4vw,3rem) 0;">
+<div style="background:white; padding: clamp(2rem,4vw,3rem) 0 0 0;">
   <div class="cta-strip anim" id="progetti">
     <div class="cta-text">
       <div class="cta-title">Pronto a scoprire<br>il progetto giusto per te?</div>
@@ -542,13 +537,7 @@ footer a { color: var(--violet-light); text-decoration:none; }
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <strong>Liceo Scientifico Statale "A. Messedaglia"</strong><br>
-  Via Don G. Bertoni, 3/b &ndash; 37122 Verona &middot; Tel. 045/596432-8034772<br>
-  Sito satellite PTOF 2025&ndash;2026 &middot;
-  <a href="https://www.liceomessedaglia.edu.it">sito istituzionale</a>
-</footer>
+<!-- footer rimosso: gestito da Google Sites -->
 
 <script>
 /* ── CONTATORI ANIMATI ── */
@@ -601,13 +590,18 @@ function notifyHeight() {
   window.parent.postMessage('[iFrameSizer]' + window.name + ':' + h + ':0', '*');
 }
 
-// Notifica ripetuta ogni 500ms per i primi 3 secondi (cattura animazioni CSS)
+// Notifica ripetuta ogni 300ms per i primi 6 secondi
 var _retries = 0;
 var _retryTimer = setInterval(function() {
   notifyHeight();
   _retries++;
-  if (_retries > 6) clearInterval(_retryTimer);
-}, 500);
+  if (_retries > 20) clearInterval(_retryTimer);
+}, 300);
+
+// Poi ogni 2 secondi per sempre (cattura lazy load, font, ecc.)
+setTimeout(function() {
+  setInterval(notifyHeight, 2000);
+}, 6000);
 
 // Notifica su resize
 window.addEventListener('resize', notifyHeight);
