@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progetti PTOF 2025–2026 · Liceo Messedaglia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #FFFFFF;
+  --bg: #F8F6FF;
+  --violet: #5B21B6;
+  --violet-mid: #7C3AED;
+  --magenta: #C026D3;
+  --magenta-light: #E879F9;
+  --text: #18181B;
+  --text-2: #3F3F46;
+  --muted: #71717A;
+  --muted-2: #A1A1AA;
+  --border: #EDE9FE;
+  --border-2: #F3F4F6;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Reset per embed iframe in Google Sites */
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  display: none;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.875rem; font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.nav-logo {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--violet), var(--magenta));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 800; color: white;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+.nav-pill {
+  font-size: 0.7rem; font-weight: 600;
+  color: var(--violet-mid);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 20px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+/* ─── TICKER ─── */
+.ticker-wrap {
+  background: linear-gradient(90deg, var(--violet) 0%, var(--violet-mid) 50%, var(--magenta) 100%);
+  overflow: hidden; padding: 9px 0; position: relative;
+}
+.ticker-wrap::before, .ticker-wrap::after {
+  content: ''; position: absolute; top: 0; width: 80px; height: 100%; z-index: 1;
+}
+.ticker-wrap::before { left: 0; background: linear-gradient(90deg, var(--violet), transparent); }
+.ticker-wrap::after  { right: 0; background: linear-gradient(-90deg, var(--magenta), transparent); }
+.ticker {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: ticker-scroll 50s linear infinite;
+}
+.ticker:hover { animation-play-state: paused; }
+.ticker-item {
+  color: rgba(255,255,255,0.92);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  padding: 0 2rem;
+  display: inline-flex; align-items: center; gap: 0.7rem;
+}
+.ticker-item::after { content: '◆'; color: rgba(255,255,255,0.35); font-size: 0.45rem; }
+@keyframes ticker-scroll { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+/* ─── HERO ─── */
+.hero {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 4vw, 3.5rem);
+  max-width: 1140px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--magenta);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 20px; height: 2px;
+  background: var(--magenta); border-radius: 2px;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.035em; color: var(--text);
+  margin-bottom: 1.2rem;
+}
+.hero h1 .grad {
+  background: linear-gradient(100deg, var(--violet), var(--magenta));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1rem; line-height: 1.75;
+  color: var(--muted); max-width: 44ch;
+  font-weight: 400;
+}
+
+.stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 18px; padding: 1.4rem 1.2rem;
+}
+.stat-card.wide {
+  grid-column: span 2;
+  background: linear-gradient(130deg, var(--violet) 0%, var(--magenta) 100%);
+  border: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.3rem 1.5rem;
+}
+.stat-num {
+  font-size: 2.4rem; font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1; color: var(--violet);
+}
+.stat-card.wide .stat-num { color: white; }
+.stat-lbl {
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--muted); margin-top: 4px;
+}
+.stat-card.wide .stat-lbl { color: rgba(255,255,255,0.7); }
+.stat-badge {
+  background: rgba(255,255,255,0.18); color: white;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+  padding: 5px 12px; border-radius: 20px;
+}
+
+/* ─── SECTION HEAD ─── */
+.sec-head {
+  max-width: 1140px; margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem) 1.8rem;
+}
+.sec-eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--violet-mid); margin-bottom: 6px;
+}
+.sec-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800; letter-spacing: -0.025em; color: var(--text);
+}
+
+.divider {
+  max-width: 1140px; margin: 0 auto 2.5rem;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+.divider hr {
+  border: none; height: 1px;
+  background: linear-gradient(90deg, var(--violet), var(--magenta) 60%, transparent);
+  opacity: 0.3;
+}
+
+/* ─── ACCORDION ─── */
+.accordion {
+  max-width: 1140px; margin: 0 auto 5rem;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.dept {
+  border: 1.5px solid var(--border);
+  border-radius: 18px; overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.dept:hover { box-shadow: 0 4px 28px rgba(91,33,182,0.07); }
+.dept.is-open { border-color: #C4B5FD; box-shadow: 0 6px 32px rgba(91,33,182,0.1); }
+
+.dept-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  cursor: pointer; user-select: none;
+  background: white;
+  transition: background 0.2s;
+  gap: 1rem;
+}
+.dept-head:hover { background: #FAFAFF; }
+.dept.is-open .dept-head {
+  background: linear-gradient(95deg, var(--violet), var(--violet-mid) 55%, var(--magenta));
+}
+.dept-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.dept-icon {
+  width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
+  background: var(--bg); display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  transition: background 0.2s;
+}
+.dept.is-open .dept-icon { background: rgba(255,255,255,0.15); }
+.dept-name {
+  font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+.dept.is-open .dept-name { color: white; }
+.dept-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.dept-count {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--violet-mid); background: var(--bg);
+  padding: 3px 10px; border-radius: 20px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.dept.is-open .dept-count { background: rgba(255,255,255,0.2); color: white; }
+.chevron {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--bg); display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; color: var(--muted);
+  transition: transform 0.3s ease, background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.dept.is-open .chevron {
+  transform: rotate(180deg);
+  background: rgba(255,255,255,0.2); color: white;
+}
+
+.dept-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  background: var(--bg);
+  border-top: 0 solid var(--border);
+}
+.dept.is-open .dept-body {
+  max-height: 2000px;
+  border-top-width: 1px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px; padding: 14px;
+}
+
+/* ─── PROJECT CARD ─── */
+.proj-card {
+  background: white;
+  border: 1.5px solid var(--border-2);
+  border-radius: 14px; padding: 1.1rem 1.1rem 1rem;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  display: flex; flex-direction: column; gap: 0;
+}
+.proj-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(91,33,182,0.12);
+  border-color: #C4B5FD;
+}
+.proj-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--violet-mid);
+  background: #EDE9FE; padding: 3px 8px; border-radius: 6px;
+  margin-bottom: 10px; width: fit-content;
+}
+.proj-name {
+  font-size: 0.92rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--text); line-height: 1.3; margin-bottom: 7px;
+}
+.proj-desc {
+  font-size: 0.8rem; line-height: 1.65;
+  color: var(--muted); flex: 1;
+}
+.proj-footer {
+  margin-top: 12px; padding-top: 10px;
+  border-top: 1px solid var(--border-2);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.proj-tag {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--magenta); background: #FDF4FF;
+  padding: 2px 8px; border-radius: 6px;
+}
+.proj-cta {
+  font-size: 0.7rem; font-weight: 600; color: var(--violet-mid);
+  display: flex; align-items: center; gap: 4px;
+}
+.proj-cta::after { content: '→'; }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: rgba(15,10,30,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.show { display: flex; }
+
+.modal {
+  background: white; border-radius: 24px;
+  width: 100%; max-width: 680px;
+  max-height: 88vh; overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(91,33,182,0.2);
+  animation: modal-in 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes modal-in {
+  from { opacity:0; transform: scale(0.93) translateY(12px); }
+  to   { opacity:1; transform: scale(1) translateY(0); }
+}
+
+.modal-hero {
+  background: linear-gradient(130deg, var(--violet), var(--magenta));
+  padding: 2rem 2rem 1.6rem; position: relative;
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); border: none; cursor: pointer;
+  color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.35); }
+.modal-badge {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.15); padding: 3px 10px; border-radius: 20px;
+  display: inline-block; margin-bottom: 12px;
+}
+.modal-title {
+  font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em;
+  color: white; line-height: 1.15; margin-bottom: 8px;
+}
+.modal-dept {
+  font-size: 0.78rem; color: rgba(255,255,255,0.7); font-weight: 500;
+}
+
+.modal-body { padding: 1.8rem 2rem; }
+
+.modal-section { margin-bottom: 1.6rem; }
+.modal-section-title {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--violet-mid);
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--border);
+}
+.modal-desc {
+  font-size: 0.88rem; line-height: 1.75; color: var(--text-2);
+}
+
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.modal-tag {
+  font-size: 0.72rem; font-weight: 600;
+  padding: 4px 12px; border-radius: 20px;
+  border: 1.5px solid var(--border);
+  color: var(--text-2);
+}
+
+/* ─── TABS ─── */
+.tabs { display: flex; gap: 0; margin-bottom: 1.4rem; border-bottom: 2px solid var(--border); }
+.tab-btn {
+  font-size: 0.82rem; font-weight: 600; color: var(--muted);
+  padding: 8px 16px; background: none; border: none; cursor: pointer;
+  border-bottom: 2.5px solid transparent; margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn.active { color: var(--violet); border-bottom-color: var(--violet); }
+.tab-btn:hover:not(.active) { color: var(--text); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ─── FORM ─── */
+.form-group { margin-bottom: 1rem; }
+.form-label {
+  display: block; font-size: 0.78rem; font-weight: 600;
+  color: var(--text-2); margin-bottom: 5px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 9px 12px;
+  font-family: 'Inter', sans-serif; font-size: 0.85rem;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--bg); color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--violet-mid);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+  background: white;
+}
+.form-textarea { resize: vertical; min-height: 80px; }
+
+.star-group { display: flex; gap: 6px; margin-bottom: 1rem; }
+.star {
+  font-size: 1.6rem; cursor: pointer; color: #D1D5DB;
+  transition: color 0.1s, transform 0.1s;
+  line-height: 1;
+}
+.star:hover, .star.active { color: #FBBF24; transform: scale(1.15); }
+
+.btn-primary {
+  width: 100%; padding: 11px;
+  background: linear-gradient(90deg, var(--violet), var(--magenta));
+  color: white; font-family: 'Inter', sans-serif;
+  font-size: 0.875rem; font-weight: 700;
+  border: none; border-radius: 12px; cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  margin-top: 0.5rem;
+}
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.success-msg {
+  display: none; text-align: center; padding: 1.5rem 1rem;
+}
+.success-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.success-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.success-sub { font-size: 0.82rem; color: var(--muted); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--text); color: rgba(255,255,255,0.5);
+  text-align: center; padding: 2rem 1.5rem;
+  font-size: 0.78rem; line-height: 1.8;
+}
+footer strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  .hero { grid-template-columns: 1fr; }
+  .stats-grid { display: none; }
+  .dept-name { font-size: 0.85rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+
+  /* Modale a tutto schermo su mobile */
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal {
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    width: 100%;
+  }
+  .modal-body { padding: 1.2rem 1rem; }
+  .modal-hero { padding: 1.4rem 1rem 1.1rem; }
+  .modal-title { font-size: 1.15rem; }
+
+  /* Accordion header più compatto */
+  .dept-head { padding: 0.9rem 1rem; }
+  .dept-icon { width: 34px; height: 34px; font-size: 1rem; }
+  .dept-count { display: none; } /* nasconde il contatore su mobile per risparmiare spazio */
+
+  /* Ticker più lento su mobile */
+  .ticker { animation-duration: 30s; }
+
+  /* Hero padding ridotto */
+  .hero { padding: 2.5rem 1rem 2rem; }
+  .sec-head { padding: 0 1rem 1.4rem; }
+  .accordion { padding: 0 0.75rem; }
+
+  /* Tab buttons più grandi per touch */
+  .tab-btn { padding: 10px 14px; font-size: 0.8rem; }
+  .btn-primary { padding: 14px; font-size: 0.9rem; }
+  .form-input, .form-select, .form-textarea { font-size: 16px; } /* evita zoom automatico su iOS */
+}
+</style>
+</head>
+<body>
+
+<!-- navbar rimossa: gestita da Google Sites -->
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" aria-hidden="true">
+    <span class="ticker-item">Liceo Cambridge</span>
+    <span class="ticker-item">Laboratori STEAM</span>
+    <span class="ticker-item">Robotica & Arduino</span>
+    <span class="ticker-item">Masterclass Fisica Moderna</span>
+    <span class="ticker-item">Laboratorio Teatrale</span>
+    <span class="ticker-item">Erasmus+</span>
+    <span class="ticker-item">Opera in Arena</span>
+    <span class="ticker-item">Olimpiadi di Matematica</span>
+    <span class="ticker-item">Biotecnologie</span>
+    <span class="ticker-item">KALEIDOSPORT</span>
+    <span class="ticker-item">Coro Scolastico</span>
+    <span class="ticker-item">ICDL — Patente Digitale</span>
+    <span class="ticker-item">AutoCAD 2D / 3D</span>
+    <span class="ticker-item">Liceo Cambridge</span>
+    <span class="ticker-item">Laboratori STEAM</span>
+    <span class="ticker-item">Robotica & Arduino</span>
+    <span class="ticker-item">Masterclass Fisica Moderna</span>
+    <span class="ticker-item">Laboratorio Teatrale</span>
+    <span class="ticker-item">Erasmus+</span>
+    <span class="ticker-item">Opera in Arena</span>
+    <span class="ticker-item">Olimpiadi di Matematica</span>
+    <span class="ticker-item">Biotecnologie</span>
+    <span class="ticker-item">KALEIDOSPORT</span>
+    <span class="ticker-item">Coro Scolastico</span>
+    <span class="ticker-item">ICDL — Patente Digitale</span>
+    <span class="ticker-item">AutoCAD 2D / 3D</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Anno Scolastico 2025–2026</div>
+    <h1>L'offerta<br>formativa del<br><span class="grad">Messedaglia.</span></h1>
+    <p class="hero-sub">Tutti i progetti e le attività di ampliamento proposte dai dipartimenti del Liceo Scientifico Statale "A. Messedaglia" di Verona.</p>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card wide">
+      <div>
+        <div class="stat-num">48+</div>
+        <div class="stat-lbl">Progetti attivi</div>
+      </div>
+      <span class="stat-badge">PTOF 25/26</span>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10</div>
+      <div class="stat-lbl">Dipartimenti</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">∞</div>
+      <div class="stat-lbl">Possibilità</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<div class="sec-head">
+  <div class="sec-eyebrow">Esplora per area</div>
+  <div class="sec-title">Tutti i progetti</div>
+</div>
+
+<!-- ACCORDION -->
+<div class="accordion">
+
+  <!-- helper: data-proj attributes drive the modal -->
+
+  <!-- 1 · ISTITUZIONALI -->
+  <div class="dept" id="d1">
+    <div class="dept-head" onclick="toggleDept('d1')">
+      <div class="dept-left">
+        <div class="dept-icon">🏛️</div>
+        <div class="dept-name">Istituzionali / Interdipartimentali</div>
+      </div>
+      <div class="dept-right">
+        <span class="dept-count">9 progetti</span>
+        <div class="chevron">▼</div>
+      </div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Liceo Cambridge','Istituzionali / Interdipartimentali','🎓 Certificazione','Preparazione curricolare agli esami IGCSE Cambridge: Physics, Biology e English as a Second Language. Un percorso di eccellenza che porta gli studenti a conseguire una certificazione internazionale riconosciuta in tutto il mondo, affiancando il percorso curricolare ordinario.','Triennio,Certificazione internazionale,Cambridge')">
+          <div class="proj-badge">🎓 Certificazione</div>
+          <div class="proj-name">Liceo Cambridge</div>
+          <div class="proj-desc">Preparazione agli esami IGCSE in Physics, Biology e English as a Second Language.</div>
+          <div class="proj-footer"><span class="proj-tag">Triennio</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Laboratori STEAM','Istituzionali / Interdipartimentali','🔬 Laboratorio','Attività laboratoriali diversificate per sviluppare autonomia, pensiero critico e abilità organizzative. Gli studenti ricercano soluzioni ai problemi proposti disponendo di una pluralità di strumenti e materiali, anche tecnologici e digitali.','Tutti gli anni,Interdisciplinare,Problem solving')">
+          <div class="proj-badge">🔬 Laboratorio</div>
+          <div class="proj-name">Laboratori STEAM</div>
+          <div class="proj-desc">Attività laboratoriali per sviluppare autonomia e pensiero critico attraverso strumenti tecnologici e digitali.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Partnership in School Education','Istituzionali / Interdipartimentali','🌍 Internazionale','Partecipazione attiva al programma Erasmus+: mobilità, job shadowing, eTwinning e cooperazione con scuole europee. Due azioni principali: mobilità e accoglienza (Azione 1) e progettazione e cooperazione internazionale (Azione 2), con simulazioni del Parlamento europeo e hackathon.','Erasmus+,eTwinning,Internazionale')">
+          <div class="proj-badge">🌍 Internazionale</div>
+          <div class="proj-name">Partnership in School Education</div>
+          <div class="proj-desc">Erasmus+, eTwinning e cooperazione con scuole europee per percorsi interdisciplinari internazionali.</div>
+          <div class="proj-footer"><span class="proj-tag">Erasmus+</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Fisica e Informatica per la Robotica','Istituzionali / Interdipartimentali','🤖 Tecnologia','Applicazione dei principi di fisica ed elettronica tramite robot MakeBlock e schede Arduino Uno con Sensor Kit. Il feedback non viene dai docenti ma dalla dimostrazione che il robot funzioni: i partecipanti imparano rivedendo le soluzioni e correggendo gli errori. In collaborazione con FabLab.','2ª–4ª Scienze Applicate,PCTO,Arduino,FabLab')">
+          <div class="proj-badge">🤖 Tecnologia</div>
+          <div class="proj-name">Fisica e Informatica per la Robotica</div>
+          <div class="proj-desc">Robot MakeBlock e schede Arduino Uno per applicare i principi di fisica ed elettronica. Valido come PCTO.</div>
+          <div class="proj-footer"><span class="proj-tag">PCTO</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Educazione alla Salute e Attenzione alla Persona','Istituzionali / Interdipartimentali','❤️ Benessere','Sportello di counseling, prevenzione delle dipendenze, educazione affettiva, inclusione motoria e donazione. Un percorso articolato per ogni anno: dalle dipendenze in 1ª, all\'educazione affettiva in 2ª, fino alla donazione di sangue e midollo osseo in 5ª. Include progetti come Martina, We Free Verona e All Inclusive.','Tutti gli anni,Counseling,Inclusione')">
+          <div class="proj-badge">❤️ Benessere</div>
+          <div class="proj-name">Educazione alla Salute e Attenzione alla Persona</div>
+          <div class="proj-desc">Counseling, prevenzione, inclusione e benessere psicofisico: un percorso su misura per ogni anno di corso.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Progetto Scoperta','Istituzionali / Interdipartimentali','🎯 Orientamento','Corsi di orientamento attivo da 15 ore ciascuno presso l\'Università di Verona, nell\'ambito del DM 934/22, in convenzione con l\'istituto scolastico. Un\'occasione concreta per esplorare l\'offerta universitaria e fare scelte consapevoli per il futuro.','Università di Verona,Orientamento,DM 934/22')">
+          <div class="proj-badge">🎯 Orientamento</div>
+          <div class="proj-name">Progetto Scoperta</div>
+          <div class="proj-desc">Corsi di orientamento attivo da 15 ore presso l'Università di Verona (DM 934/22).</div>
+          <div class="proj-footer"><span class="proj-tag">UniVR</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Sostenibilità e Educazione Ambientale (SEA)','Istituzionali / Interdipartimentali','🌱 Ambiente','Tre azioni per promuovere la cultura della sostenibilità: informazione sull\'emergenza climatica, attività di formazione-azione su gruppi e classi, e percorsi di cittadinanza attiva interdisciplinari. In linea con gli Obiettivi di Sviluppo Sostenibile dell\'Agenda 2030.','Agenda 2030,Cittadinanza,Interdisciplinare')">
+          <div class="proj-badge">🌱 Ambiente</div>
+          <div class="proj-name">Sostenibilità e Educazione Ambientale (SEA)</div>
+          <div class="proj-desc">Tre azioni per promuovere pensiero sistemico, cittadinanza attiva e cultura della sostenibilità (Agenda 2030).</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Non possiamo accoglierli tutti','Istituzionali / Interdipartimentali','🤝 Cittadinanza','Percorso su migrazioni e diritti umani in 3 moduli da 2 ore (+ 2 ore di restituzione): lezione frontale, testimonianze dirette dalla rotta balcanica e lavoro di gruppo. Due percorsi disponibili: Percorso 1 per chi si accosta al tema per la prima volta, Percorso 2 "E adesso? Accoglienza e vulnerabilità" per approfondire. A cura di OBT.','Triennio,Educazione civica,OBT')">
+          <div class="proj-badge">🤝 Cittadinanza</div>
+          <div class="proj-name">Non possiamo accoglierli tutti</div>
+          <div class="proj-desc">Percorso su migrazioni e diritti umani: testimonianze, analisi critica e lavoro di gruppo in 3 moduli.</div>
+          <div class="proj-footer"><span class="proj-tag">Triennio</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Laboratorio Scacchi e Dama','Istituzionali / Interdipartimentali','♟️ Gioco','Attività pomeridiana di gioco degli scacchi e della dama con partecipazione a gare provinciali, regionali e nazionali. Un\'occasione per sviluppare pensiero strategico, concentrazione e competitività sana.','Pomeridiano,Gare,Pensiero strategico')">
+          <div class="proj-badge">♟️ Gioco</div>
+          <div class="proj-name">Laboratorio Scacchi e Dama</div>
+          <div class="proj-desc">Attività pomeridiana con partecipazione a gare provinciali, regionali e nazionali.</div>
+          <div class="proj-footer"><span class="proj-tag">Pomeridiano</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 · LETTERE -->
+  <div class="dept" id="d2">
+    <div class="dept-head" onclick="toggleDept('d2')">
+      <div class="dept-left"><div class="dept-icon">📚</div><div class="dept-name">Dipartimento di Lettere</div></div>
+      <div class="dept-right"><span class="dept-count">7 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Laboratori di Italiano','Dipartimento di Lettere','✍️ Scrittura','Lezioni laboratoriali per rafforzare le competenze nelle diverse tipologie di scrittura previste dall\'esame di Stato: analisi del testo, saggio breve, articolo di giornale e tema di ordine generale. Un percorso pratico per affinare stile e tecnica.','Esame di Stato,Scrittura,Laboratorio')">
+          <div class="proj-badge">✍️ Scrittura</div>
+          <div class="proj-name">Laboratori di Italiano</div>
+          <div class="proj-desc">Lezioni laboratoriali per rafforzare le competenze nelle diverse tipologie di scrittura dell'esame di Stato.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Leggere la Poesia Contemporanea','Dipartimento di Lettere','📖 Poesia','Un percorso triennale in tre momenti: formazione docenti con professori UniVR (nov–gen), laboratori in classe con un corpus poetico condiviso, e residenza del poeta a Verona con incontri aperti agli studenti e alla cittadinanza. Sostenuto da ADI-sd e riconosciuto con corso SOFIA per i docenti partecipanti.','UniVR,ADI-sd,Poesia,SOFIA')">
+          <div class="proj-badge">📖 Poesia</div>
+          <div class="proj-name">Leggere la Poesia Contemporanea</div>
+          <div class="proj-desc">Formazione docenti, laboratori in classe e residenza del poeta a Verona. Con UniVR e ADI-sd.</div>
+          <div class="proj-footer"><span class="proj-tag">UniVR</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Il Quotidiano in Classe 25/26','Dipartimento di Lettere','📰 Media','Abbonamenti digitali individuali a quotidiani nazionali per motivare alla lettura argomentativa, sviluppare spirito critico e fidelizzare al buon giornalismo. Un progetto istituzionale ormai consolidato nella scuola.','Media,Lettura,Spirito critico')">
+          <div class="proj-badge">📰 Media</div>
+          <div class="proj-name">Il Quotidiano in Classe 25/26</div>
+          <div class="proj-desc">Abbonamenti digitali a quotidiani nazionali per sviluppare spirito critico e lettura argomentativa.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Didattica del Latino','Dipartimento di Lettere','🏛️ Classici','Ricerca-azione con la rete DLC, certificazione PROBAT (livelli A, B, C), Olimpiadi di Lingue e Civiltà Classiche, laboratorio di traduzione, corso AICC e Giornata Mondiale della Lingua Latina. Valido come PCTO per il triennio.','PCTO,PROBAT,Olimpiadi,AICC')">
+          <div class="proj-badge">🏛️ Classici</div>
+          <div class="proj-name">Didattica del Latino</div>
+          <div class="proj-desc">Certificazione PROBAT, Olimpiadi di Lingue Classiche, laboratorio di traduzione e AICC. Valido come PCTO.</div>
+          <div class="proj-footer"><span class="proj-tag">PCTO</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Dire Dante','Dipartimento di Lettere','🕯️ Letteratura','Lezioni-spettacolo partecipate su canti scelti della Divina Commedia: lettura, analisi e interpretazione a cura di Alessandro Anderloni. Un modo coinvolgente e teatrale per avvicinarsi al testo dantesco.','Divina Commedia,Teatro,Lettura')">
+          <div class="proj-badge">🕯️ Letteratura</div>
+          <div class="proj-name">Dire Dante</div>
+          <div class="proj-desc">Lezioni-spettacolo su canti scelti della Divina Commedia con Alessandro Anderloni.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Laboratorio Teatrale','Dipartimento di Lettere','🎭 Teatro','Dalla propedeutica con giochi e improvvisazioni teatrali, alla discussione e scrittura di un testo originale, fino alle prove e agli spettacoli finali. Un percorso completo per sviluppare creatività, competenze comunicative e capacità espressiva attraverso la finzione scenica.','Creatività,Espressione,Spettacolo')">
+          <div class="proj-badge">🎭 Teatro</div>
+          <div class="proj-name">Laboratorio Teatrale</div>
+          <div class="proj-desc">Dalla propedeutica alle improvvisazioni, dalla scrittura di un testo originale agli spettacoli finali.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Campionati di Italiano','Dipartimento di Lettere','🏆 Gara','Selezione interna dei candidati, prove regionali in modalità CBT e partecipazione alla fase nazionale. La competizione è organizzata dal MIM ed è aperta sia al biennio che al triennio. Include predisposizione delle prove, correzione e compilazione delle graduatorie.','Biennio e Triennio,MIM,Gara nazionale')">
+          <div class="proj-badge">🏆 Gara</div>
+          <div class="proj-name">Campionati di Italiano</div>
+          <div class="proj-desc">Selezione interna, prove regionali CBT e fase nazionale. Organizzato dal MIM per biennio e triennio.</div>
+          <div class="proj-footer"><span class="proj-tag">MIM</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 · LINGUE -->
+  <div class="dept" id="d3">
+    <div class="dept-head" onclick="toggleDept('d3')">
+      <div class="dept-left"><div class="dept-icon">🌐</div><div class="dept-name">Dipartimento di Lingue</div></div>
+      <div class="dept-right"><span class="dept-count">3 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Inglese Potenziato al Biennio','Dipartimento di Lingue','🗣️ Orale','2 ore settimanali in piccoli gruppi con docente madrelingua: role-play, debate, visione di video in lingua originale, giochi linguistici e presentazioni orali. Valutazione tramite osservazione sistematica, feedback individualizzato e autovalutazione degli studenti.','Biennio,Madrelingua,Speaking')">
+          <div class="proj-badge">🗣️ Orale</div>
+          <div class="proj-name">Inglese Potenziato al Biennio</div>
+          <div class="proj-desc">2 ore settimanali in piccoli gruppi con madrelingua: role-play, debate, video e presentazioni orali.</div>
+          <div class="proj-footer"><span class="proj-tag">Biennio</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Corsi di Certificazione Cambridge','Dipartimento di Lingue','🎓 Certificazione','Preparazione mirata agli esami Cambridge B1, B2 e C1: allenamento specifico per lettura, scrittura, ascolto e produzione orale. I corsi aumentano la padronanza delle prove e la sicurezza degli studenti nelle diverse competenze linguistiche.','B1,B2,C1,Cambridge')">
+          <div class="proj-badge">🎓 Certificazione</div>
+          <div class="proj-name">Corsi di Certificazione Cambridge</div>
+          <div class="proj-desc">Preparazione agli esami Cambridge B1, B2 e C1: lettura, scrittura, ascolto e produzione orale.</div>
+          <div class="proj-footer"><span class="proj-tag">B1 / B2 / C1</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Conversazione con Docenti Madrelingua','Dipartimento di Lingue','💬 Conversazione','Corsi a piccoli gruppi per sviluppare le abilità orali in inglese con insegnanti di madrelingua. Aperti a tutti gli studenti del Liceo, i corsi favoriscono l\'uso spontaneo della lingua, migliorano pronuncia e fluidità e aumentano la motivazione allo studio.','Tutti gli anni,Madrelingua,Piccoli gruppi')">
+          <div class="proj-badge">💬 Conversazione</div>
+          <div class="proj-name">Conversazione con Docenti Madrelingua</div>
+          <div class="proj-desc">Corsi a piccoli gruppi con madrelingua per sviluppare fluenza e sicurezza nell'inglese orale.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 · MATEMATICA E FISICA -->
+  <div class="dept" id="d4">
+    <div class="dept-head" onclick="toggleDept('d4')">
+      <div class="dept-left"><div class="dept-icon">🔢</div><div class="dept-name">Dipartimento di Matematica e Fisica</div></div>
+      <div class="dept-right"><span class="dept-count">6 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Campionati di Matematica','Dipartimento di Matematica e Fisica','🏆 Gara','Lezioni e allenamenti in preparazione alle gare individuali e a squadre delle Olimpiadi della Matematica e del Kangourou. Iscrizione e partecipazione a tutte le fasi: d\'istituto, provinciale, regionale e nazionale.','Olimpiadi,Kangourou,Gare')">
+          <div class="proj-badge">🏆 Gara</div>
+          <div class="proj-name">Campionati di Matematica</div>
+          <div class="proj-desc">Allenamenti per Olimpiadi di Matematica e Kangourou: gare individuali e a squadre.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Campionati di Fisica e Gare a Squadre','Dipartimento di Matematica e Fisica','⚡ Gara','Preparazione e partecipazione ai Campionati della Fisica: gara d\'istituto, gara provinciale e torneo a squadre di fine anno. Un percorso per mettere alla prova le proprie competenze fisiche in un contesto competitivo e stimolante.','Campionati,Squadre,Fisica')">
+          <div class="proj-badge">⚡ Gara</div>
+          <div class="proj-name">Campionati di Fisica e Gare a Squadre</div>
+          <div class="proj-desc">Gara d'istituto, provinciale e torneo a squadre di fine anno per i Campionati della Fisica.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('PLS — Matematica e Fisica','Dipartimento di Matematica e Fisica','🎓 Università','Attivo dal 2016-17, il progetto promuove la partecipazione agli stage di Matematica e Fisica offerti dalle università italiane. Rivolto principalmente agli studenti del triennio e in particolare del quarto anno, favorisce il raccordo tra scuola e università.','Triennio,4° anno,Stage universitari')">
+          <div class="proj-badge">🎓 Università</div>
+          <div class="proj-name">PLS — Matematica e Fisica</div>
+          <div class="proj-desc">Stage universitari e laboratori PLS per avvicinare gli studenti del triennio alla ricerca accademica.</div>
+          <div class="proj-footer"><span class="proj-tag">Triennio</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Masterclass — Fisica Moderna','Dipartimento di Matematica e Fisica','⚛️ Fisica','Progetto europeo alla 9ª edizione: lezioni introduttive sulla meccanica quantistica, approfondimento con docente universitario di Trieste, 2 lezioni gratuite dell\'Università di Padova e laboratorio di fisica delle particelle a Padova o Ferrara. Il Messedaglia è polo provinciale per questa attività dal 2018/19.','4ª–5ª,Fisica delle particelle,Polo provinciale')">
+          <div class="proj-badge">⚛️ Fisica</div>
+          <div class="proj-name">Masterclass — Fisica Moderna</div>
+          <div class="proj-desc">Progetto europeo: lezioni di quantistica e laboratorio di fisica delle particelle a Padova/Ferrara. Polo provinciale.</div>
+          <div class="proj-footer"><span class="proj-tag">4ª–5ª anno</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Museo di Fisica','Dipartimento di Matematica e Fisica','🏛️ Museo','Organizzazione di visite al Museo di Fisica interno al Liceo, per classi interne, scuole esterne e pubblico. Prevista collaborazione con la Provincia di Verona, realizzazione di un volantino pieghevole illustrativo e di una targa indicativa della sede.','Museo,Provincia di Verona,Visite guidate')">
+          <div class="proj-badge">🏛️ Museo</div>
+          <div class="proj-name">Museo di Fisica</div>
+          <div class="proj-desc">Visite guidate al museo interno: per classi, scuole esterne e pubblico, con la Provincia di Verona.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Laboriamoci','Dipartimento di Matematica e Fisica','🔬 Laboratorio','Produzione di schede di lavoro per il laboratorio di fisica, inventario e test dei materiali, compresenza per attività di laboratorio, PCTO e produzione multidisciplinare. Un progetto che valorizza il laboratorio come cuore della didattica scientifica.','PCTO,Laboratorio,Multidisciplinare')">
+          <div class="proj-badge">🔬 Laboratorio</div>
+          <div class="proj-name">Laboriamoci</div>
+          <div class="proj-desc">Schede di laboratorio, inventario materiali, compresenza e attività PCTO multidisciplinare di fisica.</div>
+          <div class="proj-footer"><span class="proj-tag">PCTO</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 · STORIA E FILOSOFIA -->
+  <div class="dept" id="d5">
+    <div class="dept-head" onclick="toggleDept('d5')">
+      <div class="dept-left"><div class="dept-icon">🏺</div><div class="dept-name">Dipartimento di Storia e Filosofia</div></div>
+      <div class="dept-right"><span class="dept-count">1 progetto</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Storia di Verona e del suo Territorio','Dipartimento di Storia e Filosofia','🏙️ Storia locale','6 incontri pomeridiani teorici sul periodo medievale e moderno di Verona, 1 test di verifica e 1–2 pomeriggi per la realizzazione di un documentario in Digital Storytelling sui luoghi più significativi della città. Focus sul ruolo dell\'Adige come elemento difensivo, lavorativo e identitario. Possibile collaborazione con licei di Legnago e Treviso.','Pomeridiano,Digital Storytelling,Verona')">
+          <div class="proj-badge">🏙️ Storia locale</div>
+          <div class="proj-name">Storia di Verona e del suo Territorio</div>
+          <div class="proj-desc">6 incontri teorici pomeridiani e realizzazione di un documentario in Digital Storytelling su Verona.</div>
+          <div class="proj-footer"><span class="proj-tag">Pomeridiano</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 · SCIENZE -->
+  <div class="dept" id="d6">
+    <div class="dept-head" onclick="toggleDept('d6')">
+      <div class="dept-left"><div class="dept-icon">🧬</div><div class="dept-name">Dipartimento di Scienze</div></div>
+      <div class="dept-right"><span class="dept-count">6 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Giochi della Chimica e Olimpiadi delle Scienze','Dipartimento di Scienze','🏆 Gara','Corso di preparazione e partecipazione ai Giochi della Chimica (organizzati dalla SCI) e alle Olimpiadi delle Scienze Naturali (ANISN). Un percorso competitivo per mettere alla prova le conoscenze scientifiche in chimica e scienze naturali.','SCI,ANISN,Olimpiadi')">
+          <div class="proj-badge">🏆 Gara</div>
+          <div class="proj-name">Giochi della Chimica e Olimpiadi delle Scienze</div>
+          <div class="proj-desc">Preparazione e partecipazione ai Giochi della Chimica (SCI) e alle Olimpiadi delle Scienze Naturali (ANISN).</div>
+          <div class="proj-footer"><span class="proj-tag">SCI / ANISN</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Laboratori Pomeridiani di Scienze','Dipartimento di Scienze','🧫 Laboratorio','Tre percorsi pratici: Biotecnologie con Kit Biorad, coltivazione dei cormi di zafferano dalla raccolta alla confezionamento del prodotto finito con analisi qualitative, e Tecniche Elettroforetiche. Attività pomeridiane di laboratorio avanzate e hands-on.','Biotecnologie,Biorad,Zafferano,Elettroforesi')">
+          <div class="proj-badge">🧫 Laboratorio</div>
+          <div class="proj-name">Laboratori Pomeridiani di Scienze</div>
+          <div class="proj-desc">Biotecnologie (Kit Biorad), coltivazione dello zafferano dall'analisi al prodotto, tecniche elettroforetiche.</div>
+          <div class="proj-footer"><span class="proj-tag">Pomeridiano</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Il Laboratorio nelle Scienze','Dipartimento di Scienze','🔬 Didattica','Standardizzazione dell\'offerta formativa dei laboratori scientifici con procedure operative strutturate, replicabili e scientificamente corrette. Un progetto per garantire pari opportunità di apprendimento sperimentale a tutti gli studenti, rafforzando il ruolo della scuola come luogo di innovazione didattica.','Innovazione,Laboratorio,Standard')">
+          <div class="proj-badge">🔬 Didattica</div>
+          <div class="proj-name">Il Laboratorio nelle Scienze</div>
+          <div class="proj-desc">Standardizzazione delle procedure di laboratorio scientifico per garantire pari opportunità a tutti gli studenti.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Conferenze in Ambito Scientifico','Dipartimento di Scienze','🎤 Conferenze','Ciclo di conferenze per arricchire e approfondire il curriculum scolastico, utile allo sviluppo di competenze trasversali e alla formazione di una responsabilità civica. I temi vengono definiti nel corso dell\'anno in base agli spunti emersi dal percorso didattico.','Conferenze,Competenze trasversali,Cittadinanza')">
+          <div class="proj-badge">🎤 Conferenze</div>
+          <div class="proj-name">Conferenze in Ambito Scientifico</div>
+          <div class="proj-desc">Ciclo di conferenze per approfondire il curriculum, sviluppare competenze trasversali e responsabilità civica.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Chemistry','Dipartimento di Scienze','🧪 CLIL','Moduli di chimica in inglese con metodologia CLIL, tenuti dal Dr. Gordon Kennedy, chimico e madrelingua inglese. Un\'esperienza linguistica e scientifica insieme, riservata alle classi del triennio, che integra la competenza in lingua straniera con i contenuti disciplinari.','Triennio,CLIL,Inglese,Chimica')">
+          <div class="proj-badge">🧪 CLIL</div>
+          <div class="proj-name">Chemistry</div>
+          <div class="proj-desc">Moduli di chimica in inglese con metodologia CLIL (Dr. Gordon Kennedy, madrelingua). Triennio.</div>
+          <div class="proj-footer"><span class="proj-tag">Triennio</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('PLS Scienze','Dipartimento di Scienze','🎓 Università','Laboratori, stage e visite a centri di ricerca universitari per avvicinare gli studenti alle scienze e sviluppare Career Management Skills. Il PLS crea un ponte tra scuola e università, rendendo le discipline scientifiche più attraenti e facilitando la transizione verso il percorso universitario.','Stage,Università,Career skills')">
+          <div class="proj-badge">🎓 Università</div>
+          <div class="proj-name">PLS Scienze</div>
+          <div class="proj-desc">Stage e laboratori universitari per avvicinare gli studenti alle scienze e sviluppare Career Management Skills.</div>
+          <div class="proj-footer"><span class="proj-tag">Triennio</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 · INFORMATICA -->
+  <div class="dept" id="d7">
+    <div class="dept-head" onclick="toggleDept('d7')">
+      <div class="dept-left"><div class="dept-icon">💻</div><div class="dept-name">Dipartimento di Informatica</div></div>
+      <div class="dept-right"><span class="dept-count">1 progetto</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('ICDL — Patente Europea del Computer','Dipartimento di Informatica','🖥️ Certificazione','La certificazione ICDL (International Computer Driving Licence) si basa sul Syllabus europeo e attesta competenze digitali riconosciute a livello internazionale. Richiede il superamento di 7 esami che coprono concetti di base dell\'informatica e utilizzo delle applicazioni standard in ambito professionale.','Certificazione internazionale,Digitale,7 esami')">
+          <div class="proj-badge">🖥️ Certificazione</div>
+          <div class="proj-name">ICDL — Patente Europea del Computer</div>
+          <div class="proj-desc">Certificazione digitale internazionale in 7 esami: competenze informatiche di base riconosciute in tutta Europa.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 · DISEGNO E STORIA DELL'ARTE -->
+  <div class="dept" id="d8">
+    <div class="dept-head" onclick="toggleDept('d8')">
+      <div class="dept-left"><div class="dept-icon">🎨</div><div class="dept-name">Dipartimento di Disegno e Storia dell'Arte</div></div>
+      <div class="dept-right"><span class="dept-count">4 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Dipingere con la Scienza','Dipartimento di Disegno e Storia dell\'Arte','🖌️ Arte & Scienza','Percorso interdisciplinare di 12 ore sulla miniatura medievale: pigmenti naturali, foglia d\'oro e chimica dei materiali. Valenza orientativa verso percorsi in arte, restauro, conservazione e chimica applicata ai beni culturali. Un\'esperienza che unisce scienza e bellezza, manualità e sapere.','Triennio,12 ore,Beni culturali,Chimica')">
+          <div class="proj-badge">🖌️ Arte & Scienza</div>
+          <div class="proj-name">Dipingere con la Scienza</div>
+          <div class="proj-desc">12 ore sulla miniatura medievale: pigmenti naturali, foglia d'oro e chimica dei materiali. Orientamento ai beni culturali.</div>
+          <div class="proj-footer"><span class="proj-tag">Triennio</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Corso di Pittura — Studenti e Docenti','Dipartimento di Disegno e Storia dell\'Arte','🎨 Benessere','Spazio creativo e rigenerante per disconnettersi dal digitale e ridurre lo stress attraverso la pittura. Aperto a studenti e docenti in giorni diversificati. Nessuna competenza pregressa richiesta: l\'obiettivo è il benessere, l\'ascolto interiore e la libera espressione.','Benessere,Espressione,Tutti')">
+          <div class="proj-badge">🎨 Benessere</div>
+          <div class="proj-name">Corso di Pittura — Studenti e Docenti</div>
+          <div class="proj-desc">Spazio creativo per disconnettersi dal digitale, ridurre lo stress e dipingere liberamente. Aperto a tutti.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('AutoCAD 2D, 3D e Fusion 360','Dipartimento di Disegno e Storia dell\'Arte','📐 CAD','Tre livelli: AutoCAD 2D per la progettazione tecnica bidimensionale, AutoCAD 3D per la modellazione solida e rendering, Fusion 360 per modellazione parametrica, simulazione CAM e preparazione alla stampa 3D o produzione CNC. Un percorso completo per l\'ingegneria, l\'architettura e il design industriale.','CAD,3D,Stampa 3D,CNC,Fusion 360')">
+          <div class="proj-badge">📐 CAD</div>
+          <div class="proj-name">AutoCAD 2D, 3D e Fusion 360</div>
+          <div class="proj-desc">Progettazione tecnica 2D/3D con AutoCAD e Fusion 360: modellazione parametrica, rendering e stampa 3D.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Opera in Arena','Dipartimento di Disegno e Storia dell\'Arte','🎵 Cultura','15 ore di approfondimento sulla lirica veronese: storia dell\'Arena come simbolo internazionale, le professioni del mondo dell\'opera (cantanti, tecnici, costumisti, scenografi, figure amministrative) e le opportunità di collaborazione offerte dalla Fondazione Arena di Verona ai giovani.','15 ore,Arena di Verona,Orientamento professionale')">
+          <div class="proj-badge">🎵 Cultura</div>
+          <div class="proj-name">Opera in Arena</div>
+          <div class="proj-desc">15 ore sull'opera lirica all'Arena di Verona: storia, professioni e orientamento alle carriere nel mondo musicale.</div>
+          <div class="proj-footer"><span class="proj-tag">15 ore</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 · SCIENZE MOTORIE -->
+  <div class="dept" id="d9">
+    <div class="dept-head" onclick="toggleDept('d9')">
+      <div class="dept-left"><div class="dept-icon">⚽</div><div class="dept-name">Dipartimento di Scienze Motorie e Sportive</div></div>
+      <div class="dept-right"><span class="dept-count">6 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('KALEIDOSPORT','Dipartimento di Scienze Motorie e Sportive','🏃 Sport','Un\'esplosione di attività: calcio, rugby, baseball, atletica, parkour, arrampicata, vela, rafting, padel, krav maga, spada storica e molto altro. Programma diversificato per anno: accoglienza e parkour in 1ª, Aikido in 2ª, padel in 3ª, attività da definire in 4ª, tiro con l\'arco in 5ª.','Tutti gli anni,Sport,Outdoor')">
+          <div class="proj-badge">🏃 Sport</div>
+          <div class="proj-name">KALEIDOSPORT</div>
+          <div class="proj-desc">Calcio, rugby, parkour, arrampicata, vela, rafting, padel, krav maga e molto altro. Un programma per ogni anno.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Educazione Stradale','Dipartimento di Scienze Motorie e Sportive','🚦 Sicurezza','Approfondimento delle tematiche di educazione stradale per sensibilizzare sui pericoli della strada e promuovere comportamenti responsabili: in auto, ciclomotore, bicicletta, monopattino e a piedi. Un percorso per formare cittadini consapevoli e sicuri.','Sicurezza,Cittadinanza,Tutti gli anni')">
+          <div class="proj-badge">🚦 Sicurezza</div>
+          <div class="proj-name">Educazione Stradale</div>
+          <div class="proj-desc">Sensibilizzazione sui pericoli della strada per pedoni, ciclisti, monopattinisti e conducenti.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Krav Maga — Corso di Autodifesa','Dipartimento di Scienze Motorie e Sportive','🥋 Autodifesa','Corso di autodifesa con tecnica Krav Maga per acquisire sicurezza in sé stessi, imparare a riconoscere situazioni a rischio e sapere come rispondere in modo efficace. Un percorso pratico che sviluppa consapevolezza corporea e gestione delle situazioni di pericolo.','Krav Maga,Autodifesa,Sicurezza personale')">
+          <div class="proj-badge">🥋 Autodifesa</div>
+          <div class="proj-name">Krav Maga — Corso di Autodifesa</div>
+          <div class="proj-desc">Tecniche di autodifesa Krav Maga: sicurezza personale, riconoscimento dei rischi e risposta efficace.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Primo Soccorso, RCP e BLS-D','Dipartimento di Scienze Motorie e Sportive','🩺 Salute','Formazione alle manovre salvavita e utilizzo del defibrillatore. Adesione ai progetti "Diamoci una scossa" e "Pillole di primo soccorso peer to peer" dell\'Azienda Ospedaliera. Un percorso concreto per diventare cittadini capaci di intervenire in situazioni di emergenza.','BLS-D,Defibrillatore,Primo soccorso')">
+          <div class="proj-badge">🩺 Salute</div>
+          <div class="proj-name">Primo Soccorso, RCP e BLS-D</div>
+          <div class="proj-desc">Manovre salvavita e uso del defibrillatore. Progetti "Diamoci una scossa" e "Pillole di primo soccorso peer to peer".</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Messofficina','Dipartimento di Scienze Motorie e Sportive','🚲 Officina','Acquisizione di abilità tecniche per la manutenzione ordinaria delle biciclette. Un\'attività pratica che combina competenze manuali, sostenibilità e autonomia, valorizzando la bicicletta come mezzo di trasporto responsabile.','Biciclette,Sostenibilità,Manualità')">
+          <div class="proj-badge">🚲 Officina</div>
+          <div class="proj-name">Messofficina</div>
+          <div class="proj-desc">Competenze di manutenzione ordinaria delle biciclette: un'abilità pratica con valenza sostenibile.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Amici della Natura','Dipartimento di Scienze Motorie e Sportive','🏔️ Natura','Trekking, sci nordico, rafting, mountain bike, arrampicata e vela in ambiente naturale con bassa impronta ecologica. Uscite di 1–2 notti, partecipazione alle paraolimpiadi di Milano-Cortina 2026, cammini storici (Via Francigena, Via degli Dei). Attività anche in rete con altre scuole.','Outdoor,Natura,Milano-Cortina 2026,Sostenibile')">
+          <div class="proj-badge">🏔️ Natura</div>
+          <div class="proj-name">Amici della Natura</div>
+          <div class="proj-desc">Trekking, sci, rafting, bici e vela a bassa impronta ecologica. Paraolimpiadi Milano-Cortina 2026 e cammini storici.</div>
+          <div class="proj-footer"><span class="proj-tag">Outdoor</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 · DISCIPLINE GIURIDICHE -->
+  <div class="dept" id="d10">
+    <div class="dept-head" onclick="toggleDept('d10')">
+      <div class="dept-left"><div class="dept-icon">⚖️</div><div class="dept-name">Dipartimento di Discipline Giuridiche ed Economiche</div></div>
+      <div class="dept-right"><span class="dept-count">2 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Da Predatori a Custodi del Mondo','Dipartimento di Discipline Giuridiche ed Economiche','🌿 Ambiente','Progetto LAV Verona con protocollo MIM: approccio interdisciplinare e CLIL in inglese su ambiente, animali e salute. Attività laboratoriali in compresenza con esperti, dibattiti, concorsi e partecipazione a eventi culturali. Obiettivo: sviluppare senso critico e responsabilità verso un futuro sostenibile.','LAV Verona,CLIL,Interdisciplinare,MIM')">
+          <div class="proj-badge">🌿 Ambiente</div>
+          <div class="proj-name">Da Predatori a Custodi del Mondo</div>
+          <div class="proj-desc">Progetto LAV Verona: ambiente, animali e salute con approccio CLIL, dibattiti e laboratori interdisciplinari.</div>
+          <div class="proj-footer"><span class="proj-tag">LAV Verona</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Il Cammino di Don Lorenzo Milani','Dipartimento di Discipline Giuridiche ed Economiche','🚶 Cammino','Lettura di "Lettera a una professoressa", film "Don Milani - Il priore di Barbiana", interventi su Costituzione e IRC, e trekking storico-culturale da Calenzano a Barbiana con guide ambientali certificate. Un cammino culturale, storico e civile nel Mugello per incontrare i luoghi e i testimoni di don Milani.','Trekking,Costituzione,Mugello,Cittadinanza')">
+          <div class="proj-badge">🚶 Cammino</div>
+          <div class="proj-name">Il Cammino di Don Lorenzo Milani</div>
+          <div class="proj-desc">Lettura, film e trekking storico da Calenzano a Barbiana con guide ambientali. Costituzione e cittadinanza.</div>
+          <div class="proj-footer"><span class="proj-tag">Trekking</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 · RELIGIONE -->
+  <div class="dept" id="d11">
+    <div class="dept-head" onclick="toggleDept('d11')">
+      <div class="dept-left"><div class="dept-icon">🕊️</div><div class="dept-name">Dipartimento di Religione</div></div>
+      <div class="dept-right"><span class="dept-count">3 progetti</span><div class="chevron">▼</div></div>
+    </div>
+    <div class="dept-body">
+      <div class="projects-grid">
+        <div class="proj-card" onclick="openModal('Coro Scolastico','Dipartimento di Religione','🎵 Musica','Gruppo vocale misto con prove settimanali, repertorio aperto a generi diversi e strumenti. Partecipazione ai momenti significativi della vita scolastica (Natale, fine anno) e a concorsi. Un progetto per fare della scuola un luogo di bellezza, espressione e incontro.','Musica,Coro,Inclusione')">
+          <div class="proj-badge">🎵 Musica</div>
+          <div class="proj-name">Coro Scolastico</div>
+          <div class="proj-desc">Gruppo vocale misto con prove settimanali, repertorio aperto e partecipazione ai momenti della vita scolastica.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Generare Ponti — Viaggio in Turchia','Dipartimento di Religione','🌍 Intercultura','Incontri preparatori su cittadinanza europea, diritti umani e storia della Turchia, seguiti da un viaggio con visita a siti storici, incontri con Caritas Turchia e diocesi di Alessandretta, testimonianze di rifugiati e attività di volontariato. Accompagnamento da guide esperte e figure educative con esperienza interculturale.','Turchia,Caritas,Volontariato,Erasmus')">
+          <div class="proj-badge">🌍 Intercultura</div>
+          <div class="proj-name">Generare Ponti — Viaggio in Turchia</div>
+          <div class="proj-desc">Preparazione in aula e viaggio in Turchia: siti storici, Caritas, rifugiati e volontariato interculturale.</div>
+          <div class="proj-footer"><span class="proj-tag">Volontariato</span><span class="proj-cta">Scopri</span></div>
+        </div>
+        <div class="proj-card" onclick="openModal('Convivenza','Dipartimento di Religione','🤝 Relazioni','Circle time, giochi di ruolo, laboratori espressivi sul riconoscimento delle emozioni e percorsi di educazione alla cittadinanza attiva. Un progetto per costruire un clima di classe positivo, inclusivo e responsabile, prevenendo il disagio e favorendo la coesione del gruppo.','Relazioni,Inclusione,Cittadinanza,Empatia')">
+          <div class="proj-badge">🤝 Relazioni</div>
+          <div class="proj-name">Convivenza</div>
+          <div class="proj-desc">Circle time, giochi di ruolo e laboratori per costruire un clima di classe positivo, inclusivo e responsabile.</div>
+          <div class="proj-footer"><span class="proj-tag">Tutti gli anni</span><span class="proj-cta">Scopri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /accordion -->
+
+<!-- FOOTER -->
+<footer>
+  <strong>Liceo Scientifico Statale "A. Messedaglia"</strong><br>
+  Via Don G. Bertoni, 3/b – 37122 Verona · Tel. 045/596432-8034772<br>
+  Progetti PTOF 2025–2026 · Sito satellite dell'offerta formativa
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hero">
+      <button class="modal-close" onclick="closeModal()" aria-label="Chiudi">✕</button>
+      <div class="modal-badge" id="mBadge"></div>
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-dept" id="mDept"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Il progetto</div>
+        <div class="modal-desc" id="mDesc"></div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Tag</div>
+        <div class="modal-tags" id="mTags"></div>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('iscr')">&#128203; Iscriviti</button>
+        <button class="tab-btn" onclick="switchTab('feed')">&#11088; Lascia un feedback</button>
+      </div>
+      <!-- Tab: Iscrizione -->
+      <div class="tab-pane active" id="tab-iscr">
+        <div id="form-iscr">
+          <div class="form-group">
+            <label class="form-label">Nome e cognome</label>
+            <input type="text" class="form-input" placeholder="es. Mario Rossi">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Classe</label>
+            <select class="form-select">
+              <option value="">Seleziona la tua classe…</option>
+              <option>1ª A</option><option>1ª B</option><option>1ª C</option><option>1ª D</option><option>1ª E</option>
+              <option>2ª A</option><option>2ª B</option><option>2ª C</option><option>2ª D</option><option>2ª E</option>
+              <option>3ª A</option><option>3ª B</option><option>3ª C</option><option>3ª D</option><option>3ª E</option>
+              <option>4ª A</option><option>4ª B</option><option>4ª C</option><option>4ª D</option><option>4ª E</option>
+              <option>5ª A</option><option>5ª B</option><option>5ª C</option><option>5ª D</option><option>5ª E</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email scolastica</label>
+            <input type="email" class="form-input" placeholder="nome.cognome@studenti.messedaglia.it">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Note o richieste (opzionale)</label>
+            <textarea class="form-textarea" placeholder="Scrivi qui eventuali domande o note…"></textarea>
+          </div>
+          <button class="btn-primary" onclick="submitForm('iscr')">Invia iscrizione →</button>
+        </div>
+        <div class="success-msg" id="success-iscr" style="display:none;">
+          <div class="success-icon">✅</div>
+          <div class="success-title">Iscrizione inviata!</div>
+          <div class="success-sub">Il docente referente ti contatterà per i dettagli.</div>
+        </div>
+      </div>
+      <!-- Tab: Feedback -->
+      <div class="tab-pane" id="tab-feed">
+        <div id="form-feed">
+          <div class="form-group">
+            <label class="form-label">Come valuti questo progetto?</label>
+            <div class="star-group" id="stars">
+              <span class="star" data-v="1" onclick="setStar(1)">★</span>
+              <span class="star" data-v="2" onclick="setStar(2)">★</span>
+              <span class="star" data-v="3" onclick="setStar(3)">★</span>
+              <span class="star" data-v="4" onclick="setStar(4)">★</span>
+              <span class="star" data-v="5" onclick="setStar(5)">★</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hai partecipato a questo progetto?</label>
+            <select class="form-select">
+              <option>Sì, quest'anno</option>
+              <option>Sì, in anni precedenti</option>
+              <option>No, ma mi interessa</option>
+              <option>No, non mi interessa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Il tuo commento</label>
+            <textarea class="form-textarea" placeholder="Racconta la tua esperienza o cosa ti aspetti da questo progetto…"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nome (opzionale)</label>
+            <input type="text" class="form-input" placeholder="Puoi restare anonimo/a">
+          </div>
+          <button class="btn-primary" onclick="submitForm('feed')">Invia feedback →</button>
+        </div>
+        <div class="success-msg" id="success-feed" style="display:none;">
+          <div class="success-icon">&#128591;</div>
+          <div class="success-title">Grazie per il tuo feedback!</div>
+          <div class="success-sub">Le tue opinioni aiutano a migliorare i progetti.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ACCORDION */
+function toggleDept(id) {
+  var el = document.getElementById(id);
+  var isOpen = el.classList.contains('is-open');
+  document.querySelectorAll('.dept').forEach(function(d){ d.classList.remove('is-open'); });
+  if (!isOpen) {
+    el.classList.add('is-open');
+    setTimeout(function(){ el.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 80);
+  }
+}
+
+/* MODAL */
+function openModal(title, dept, badge, desc, tagsStr) {
+  document.getElementById('mTitle').textContent = title;
+  document.getElementById('mDept').textContent = dept;
+  document.getElementById('mBadge').textContent = badge;
+  document.getElementById('mDesc').textContent = desc;
+  var tagsEl = document.getElementById('mTags');
+  tagsEl.innerHTML = tagsStr.split(',').map(function(t){
+    return '<span class="modal-tag">' + t.trim() + '</span>';
+  }).join('');
+  document.getElementById('form-iscr').style.display = 'block';
+  document.getElementById('success-iscr').style.display = 'none';
+  document.getElementById('form-feed').style.display = 'block';
+  document.getElementById('success-feed').style.display = 'none';
+  switchTab('iscr');
+  setStar(0);
+  document.getElementById('modalOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+/* TABS */
+function switchTab(name) {
+  var tabs = ['iscr','feed'];
+  document.querySelectorAll('.tab-btn').forEach(function(b, i){
+    b.classList.toggle('active', tabs[i] === name);
+  });
+  document.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+/* STARS */
+var starVal = 0;
+function setStar(v) {
+  starVal = v;
+  document.querySelectorAll('.star').forEach(function(s){
+    s.classList.toggle('active', parseInt(s.dataset.v) <= v);
+  });
+}
+
+/* SUBMIT */
+function submitForm(type) {
+  document.getElementById('form-' + type).style.display = 'none';
+  document.getElementById('success-' + type).style.display = 'block';
+}
+
+/* ── IFRAME AUTO-RESIZE per Google Sites ──
+   Comunica l'altezza reale del documento alla pagina Sites
+   ogni volta che il contenuto cambia (accordion aperto/chiuso,
+   modale aperta, resize finestra). Sites riceve il messaggio
+   e ridimensiona l'iframe di conseguenza. */
+function notifyHeight() {
+  var h = document.documentElement.scrollHeight;
+  // Formato riconosciuto da Google Sites
+  window.parent.postMessage({ type: 'resize', height: h }, '*');
+  // Formato alternativo usato da alcuni embed Sites
+  window.parent.postMessage(JSON.stringify({ sentinel: 'amp', type: 'embed-size', height: h }), '*');
+}
+
+// Notifica all'avvio
+window.addEventListener('load', function() {
+  notifyHeight();
+  // Secondo invio dopo 500ms per sicurezza (font web potrebbero cambiare layout)
+  setTimeout(notifyHeight, 500);
+});
+
+// Notifica ad ogni resize della finestra
+window.addEventListener('resize', notifyHeight);
+
+// Notifica quando l'accordion cambia (intercetta toggleDept)
+var _origToggle = toggleDept;
+toggleDept = function(id) {
+  _origToggle(id);
+  // Aspetta la fine dell'animazione CSS (400ms) poi notifica
+  setTimeout(notifyHeight, 420);
+};
+
+// Notifica quando la modale apre/chiude (cambia lo scroll del body)
+var _origOpen = openModal;
+openModal = function() {
+  _origOpen.apply(this, arguments);
+  setTimeout(notifyHeight, 50);
+};
+var _origClose = closeModal;
+closeModal = function() {
+  _origClose();
+  setTimeout(notifyHeight, 50);
+};
+
+// Observer per qualsiasi altra variazione del DOM
+if (window.MutationObserver) {
+  var observer = new MutationObserver(function() { notifyHeight(); });
+  observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+}
+</script>
+</body>
+</html>

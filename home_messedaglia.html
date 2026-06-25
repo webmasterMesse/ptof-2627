@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home — Progetti PTOF · Liceo Messedaglia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --violet: #5B21B6;
+  --violet-mid: #7C3AED;
+  --violet-light: #8B5CF6;
+  --magenta: #C026D3;
+  --magenta-light: #E879F9;
+  --white: #FFFFFF;
+  --bg: #F8F6FF;
+  --text: #18181B;
+  --text-2: #3F3F46;
+  --muted: #71717A;
+  --border: #EDE9FE;
+}
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TICKER ── */
+.ticker-wrap {
+  background: linear-gradient(90deg, var(--violet), var(--violet-mid) 50%, var(--magenta));
+  overflow: hidden; padding: 9px 0; position: relative;
+}
+.ticker-wrap::before, .ticker-wrap::after {
+  content:""; position:absolute; top:0; width:60px; height:100%; z-index:1;
+}
+.ticker-wrap::before { left:0; background: linear-gradient(90deg,var(--violet),transparent); }
+.ticker-wrap::after  { right:0; background: linear-gradient(-90deg,var(--magenta),transparent); }
+.ticker {
+  display:flex; white-space:nowrap;
+  animation: tick 45s linear infinite;
+}
+.ticker:hover { animation-play-state: paused; }
+.ticker-item {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0 2rem;
+  display: inline-flex; align-items: center; gap: 0.7rem;
+}
+.ticker-item::after { content:"◆"; color:rgba(255,255,255,0.3); font-size:0.4rem; }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── HERO ── */
+.hero {
+  min-height: 88vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(3rem,8vw,6rem) clamp(1.2rem,6vw,4rem);
+  position: relative; overflow: hidden;
+}
+
+/* sfondo decorativo */
+.hero::before {
+  content:"";
+  position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(192,38,211,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 10% 80%, rgba(91,33,182,0.07) 0%, transparent 70%);
+}
+/* cerchio decorativo grande */
+.hero::after {
+  content:"";
+  position:absolute;
+  width: clamp(300px,55vw,700px);
+  height: clamp(300px,55vw,700px);
+  border-radius: 50%;
+  border: 1.5px solid rgba(124,58,237,0.1);
+  top: 50%; right: -15%;
+  transform: translateY(-50%);
+  z-index:0;
+}
+
+.hero-inner {
+  position: relative; z-index:1;
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem);
+  align-items: center;
+}
+
+/* colonna sinistra */
+.hero-left {}
+
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--magenta);
+  background: #FDF4FF; border: 1px solid #F5D0FE;
+  padding: 5px 12px; border-radius: 20px;
+  margin-bottom: 1.6rem;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-label::before { content:"✦"; font-size:0.6rem; }
+
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800; line-height: 1.0;
+  letter-spacing: -0.04em; color: var(--text);
+  margin-bottom: 1.4rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-title .line-grad {
+  display: block;
+  background: linear-gradient(100deg, var(--violet), var(--magenta));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-title .line-plain { display: block; }
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.75; color: var(--muted);
+  max-width: 42ch; margin-bottom: 2rem;
+  font-weight: 400;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-cta {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(90deg, var(--violet), var(--magenta));
+  color: white; font-family: inherit;
+  font-size: 0.9rem; font-weight: 700;
+  padding: 13px 24px; border-radius: 14px;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+}
+.btn-primary:hover {
+  opacity: 0.92; transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(124,58,237,0.4);
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--text);
+  font-family: inherit; font-size: 0.9rem; font-weight: 600;
+  padding: 13px 24px; border-radius: 14px;
+  border: 1.5px solid var(--border); cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.btn-secondary:hover { border-color: var(--violet-light); transform: translateY(-2px); }
+
+/* colonna destra — visual */
+.hero-right {
+  display: flex; flex-direction: column; gap: 14px;
+  animation: fadeUp 0.6s 0.25s ease both;
+}
+
+.stat-block {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 1.4rem 1.6rem;
+  transition: transform 0.2s;
+}
+.stat-block:hover { transform: translateY(-3px); }
+.stat-block.accent {
+  background: linear-gradient(130deg, var(--violet), var(--magenta));
+  border: none;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stat-num {
+  font-size: 2.6rem; font-weight: 800; letter-spacing: -0.05em;
+  line-height:1; color: var(--violet);
+}
+.stat-block.accent .stat-num { color: white; }
+.stat-lbl {
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--muted); margin-top: 4px;
+}
+.stat-block.accent .stat-lbl { color: rgba(255,255,255,0.7); }
+.stat-badge {
+  background: rgba(255,255,255,0.18); color: white;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+  padding: 5px 12px; border-radius: 20px;
+}
+
+/* scroll indicator */
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  animation: bounce 2s ease infinite;
+  z-index:1;
+}
+.scroll-hint::after {
+  content:"↓"; font-size: 1rem; color: var(--violet-light);
+}
+@keyframes bounce {
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(6px)}
+}
+
+/* ── DIVIDER ── */
+.wave-divider {
+  width:100%; line-height:0; margin-top:-2px;
+}
+.wave-divider svg { display:block; width:100%; }
+
+/* ── SEZIONE COSA TROVI QUI ── */
+.section {
+  padding: clamp(3rem,6vw,5rem) clamp(1.2rem,6vw,4rem);
+  max-width: 1100px; margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--violet-mid);
+  margin-bottom: 0.6rem;
+}
+.section-title {
+  font-size: clamp(1.8rem,3.5vw,2.6rem);
+  font-weight: 800; letter-spacing: -0.03em;
+  color: var(--text); margin-bottom: 0.8rem; line-height:1.1;
+}
+.section-title em {
+  font-style:normal;
+  background: linear-gradient(90deg,var(--violet),var(--magenta));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.section-sub {
+  font-size: 1rem; color: var(--muted); line-height:1.7;
+  max-width: 52ch; margin-bottom: 2.5rem;
+}
+
+/* card "cosa trovi" */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.feature-card {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 1.6rem;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  cursor: default;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(91,33,182,0.1);
+  border-color: #C4B5FD;
+}
+.feature-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 1rem;
+}
+.ic-violet  { background: #EDE9FE; }
+.ic-magenta { background: #FDF4FF; }
+.ic-green   { background: #F0FDF4; }
+.ic-amber   { background: #FFFBEB; }
+
+.feature-title {
+  font-size: 1rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--text); margin-bottom: 0.5rem;
+}
+.feature-desc {
+  font-size: 0.83rem; line-height: 1.7; color: var(--muted);
+}
+.feature-count {
+  display: inline-block; margin-top: 1rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--violet-mid);
+  background: #EDE9FE; padding: 3px 10px; border-radius: 20px;
+}
+
+/* ── STRIP CTA ── */
+.cta-strip {
+  margin: 0 clamp(1rem,4vw,2.5rem) clamp(2rem,4vw,3rem);
+  background: linear-gradient(130deg, var(--violet) 0%, var(--violet-mid) 40%, var(--magenta) 100%);
+  border-radius: 24px; padding: clamp(2rem,4vw,3rem) clamp(1.5rem,4vw,3rem);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+}
+/* cerchio decorativo interno */
+.cta-strip::before {
+  content:""; position:absolute;
+  width:300px; height:300px; border-radius:50%;
+  background: rgba(255,255,255,0.05);
+  top:-100px; right:-60px;
+}
+.cta-strip::after {
+  content:""; position:absolute;
+  width:200px; height:200px; border-radius:50%;
+  background: rgba(255,255,255,0.04);
+  bottom:-80px; right:120px;
+}
+.cta-text { position:relative; z-index:1; }
+.cta-title {
+  font-size: clamp(1.4rem,2.5vw,1.9rem);
+  font-weight: 800; letter-spacing: -0.02em;
+  color: white; margin-bottom: 0.4rem; line-height:1.15;
+}
+.cta-sub {
+  font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height:1.6;
+  max-width: 44ch;
+}
+.cta-actions { position:relative; z-index:1; flex-shrink:0; }
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--violet);
+  font-family: inherit; font-size: 0.9rem; font-weight: 700;
+  padding: 13px 24px; border-radius: 14px;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text); color: rgba(255,255,255,0.45);
+  text-align: center; padding: 2rem 1.5rem;
+  font-size: 0.76rem; line-height:1.9;
+}
+footer strong { color: rgba(255,255,255,0.8); font-weight:600; }
+footer a { color: var(--violet-light); text-decoration:none; }
+
+/* ── ANIMAZIONI ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* animate on scroll */
+.anim {
+  opacity:0; transform:translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.anim.visible { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .hero { min-height: auto; padding-bottom: 3rem; }
+  .scroll-hint { display:none; }
+  .features-grid { grid-template-columns:1fr; }
+  .cta-strip { flex-direction:column; text-align:center; }
+  .cta-actions { width:100%; }
+  .btn-white { width:100%; justify-content:center; }
+  .hero::after { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" aria-hidden="true">
+    <span class="ticker-item">Liceo Cambridge</span>
+    <span class="ticker-item">Laboratori STEAM</span>
+    <span class="ticker-item">Robotica &amp; Arduino</span>
+    <span class="ticker-item">Masterclass Fisica Moderna</span>
+    <span class="ticker-item">Laboratorio Teatrale</span>
+    <span class="ticker-item">Erasmus+</span>
+    <span class="ticker-item">Opera in Arena</span>
+    <span class="ticker-item">Olimpiadi di Matematica</span>
+    <span class="ticker-item">Biotecnologie</span>
+    <span class="ticker-item">KALEIDOSPORT</span>
+    <span class="ticker-item">Coro Scolastico</span>
+    <span class="ticker-item">AutoCAD 2D / 3D</span>
+    <span class="ticker-item">Liceo Cambridge</span>
+    <span class="ticker-item">Laboratori STEAM</span>
+    <span class="ticker-item">Robotica &amp; Arduino</span>
+    <span class="ticker-item">Masterclass Fisica Moderna</span>
+    <span class="ticker-item">Laboratorio Teatrale</span>
+    <span class="ticker-item">Erasmus+</span>
+    <span class="ticker-item">Opera in Arena</span>
+    <span class="ticker-item">Olimpiadi di Matematica</span>
+    <span class="ticker-item">Biotecnologie</span>
+    <span class="ticker-item">KALEIDOSPORT</span>
+    <span class="ticker-item">Coro Scolastico</span>
+    <span class="ticker-item">AutoCAD 2D / 3D</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-label">Anno Scolastico 2025–2026</div>
+      <h1 class="hero-title">
+        <span class="line-plain">Progetti</span>
+        <span class="line-grad">Liceo</span>
+        <span class="line-grad">Messedaglia.</span>
+      </h1>
+      <p class="hero-sub">
+        48 progetti, 10 dipartimenti, infinite possibilità.
+        Esplora l'offerta formativa del Liceo Scientifico
+        "A. Messedaglia" di Verona e trova il progetto che fa per te.
+      </p>
+      <div class="hero-cta">
+        <a href="#progetti" class="btn-primary">Esplora i progetti &#8594;</a>
+        <a href="#cosa-trovi" class="btn-secondary">Scopri di più</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-block accent">
+        <div>
+          <div class="stat-num" id="counter-progetti">0</div>
+          <div class="stat-lbl">Progetti attivi</div>
+        </div>
+        <span class="stat-badge">PTOF 25/26</span>
+      </div>
+      <div class="stat-row">
+        <div class="stat-block">
+          <div class="stat-num" id="counter-dept">0</div>
+          <div class="stat-lbl">Dipartimenti</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">∞</div>
+          <div class="stat-lbl">Possibilità</div>
+        </div>
+      </div>
+      <div class="stat-block" style="background:white;border-color:var(--border);">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--violet-mid);margin-bottom:10px;">Aree tematiche</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="background:#EDE9FE;color:var(--violet-mid);font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">🔬 Scienze</span>
+          <span style="background:#FDF4FF;color:var(--magenta);font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">🎨 Arte</span>
+          <span style="background:#F0FDF4;color:#16A34A;font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">🌍 Lingue</span>
+          <span style="background:#FFFBEB;color:#D97706;font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">⚽ Sport</span>
+          <span style="background:#EDE9FE;color:var(--violet-mid);font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">📚 Lettere</span>
+          <span style="background:#FDF4FF;color:var(--magenta);font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">💻 Tech</span>
+          <span style="background:#F0FDF4;color:#16A34A;font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">🤝 Civica</span>
+          <span style="background:#FFFBEB;color:#D97706;font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:20px;">🎵 Musica</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scorri</div>
+</section>
+
+<!-- SEZIONE COSA TROVI QUI -->
+<div id="cosa-trovi" style="background:var(--bg); padding: clamp(3rem,6vw,5rem) 0;">
+<div class="section">
+  <div class="anim">
+    <div class="section-eyebrow">[ 01 — Cosa trovi qui ]</div>
+    <h2 class="section-title">Un liceo che non<br>si ferma in classe.</h2>
+    <p class="section-sub">
+      Oltre alle lezioni curricolari, il Messedaglia offre ogni anno
+      un ricco programma di attività, laboratori, gare e percorsi
+      per ampliare competenze, scoprire nuove passioni e costruire il futuro.
+    </p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card anim">
+      <div class="feature-icon ic-violet">🔬</div>
+      <div class="feature-title">Laboratori e ricerca</div>
+      <div class="feature-desc">
+        Dalla fisica delle particelle alle biotecnologie, passando per
+        la robotica e la chimica dei pigmenti: scienza che si tocca con mano.
+      </div>
+      <span class="feature-count">15+ progetti</span>
+    </div>
+    <div class="feature-card anim">
+      <div class="feature-icon ic-green">🌍</div>
+      <div class="feature-title">Lingue e internazionalità</div>
+      <div class="feature-desc">
+        Certificazioni Cambridge, conversazione con madrelingua,
+        Erasmus+ e partnership con scuole di tutta Europa.
+      </div>
+      <span class="feature-count">6 progetti</span>
+    </div>
+    <div class="feature-card anim">
+      <div class="feature-icon ic-amber">⚽</div>
+      <div class="feature-title">Sport e benessere</div>
+      <div class="feature-desc">
+        Parkour, vela, krav maga, rafting, arrampicata, primo soccorso
+        e molto altro. KALEIDOSPORT offre un'attività per ogni gusto.
+      </div>
+      <span class="feature-count">6 progetti</span>
+    </div>
+    <div class="feature-card anim">
+      <div class="feature-icon ic-magenta">🎭</div>
+      <div class="feature-title">Arte, musica e teatro</div>
+      <div class="feature-desc">
+        Laboratorio teatrale, coro scolastico, opera in Arena,
+        corso di pittura e miniatura medievale: la creatività al centro.
+      </div>
+      <span class="feature-count">8 progetti</span>
+    </div>
+    <div class="feature-card anim">
+      <div class="feature-icon ic-violet">🏆</div>
+      <div class="feature-title">Gare e olimpiadi</div>
+      <div class="feature-desc">
+        Matematica, fisica, chimica, italiano e scienze naturali:
+        competizioni a livello provinciale, regionale e nazionale.
+      </div>
+      <span class="feature-count">7 progetti</span>
+    </div>
+    <div class="feature-card anim">
+      <div class="feature-icon ic-green">🤝</div>
+      <div class="feature-title">Cittadinanza e valori</div>
+      <div class="feature-desc">
+        Sostenibilità, migrazioni, diritti umani, volontariato e
+        memoria storica: percorsi per diventare cittadini consapevoli.
+      </div>
+      <span class="feature-count">6 progetti</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CTA STRIP -->
+<div style="background:white; padding: clamp(2rem,4vw,3rem) 0;">
+  <div class="cta-strip anim" id="progetti">
+    <div class="cta-text">
+      <div class="cta-title">Pronto a scoprire<br>il progetto giusto per te?</div>
+      <p class="cta-sub">
+        Sfoglia tutti i 48 progetti divisi per dipartimento,
+        leggi le descrizioni e iscriviti direttamente online.
+      </p>
+    </div>
+    <div class="cta-actions">
+      <a href="../progetti" class="btn-white">Vai ai progetti &#8594;</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Liceo Scientifico Statale "A. Messedaglia"</strong><br>
+  Via Don G. Bertoni, 3/b &ndash; 37122 Verona &middot; Tel. 045/596432-8034772<br>
+  Sito satellite PTOF 2025&ndash;2026 &middot;
+  <a href="https://www.liceomessedaglia.edu.it">sito istituzionale</a>
+</footer>
+
+<script>
+/* ── CONTATORI ANIMATI ── */
+function animateCounter(id, target, duration) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var start = 0, step = target / (duration / 16);
+  var timer = setInterval(function() {
+    start += step;
+    if (start >= target) { start = target; clearInterval(timer); }
+    el.textContent = Math.round(start) + (target === 48 ? '+' : '');
+  }, 16);
+}
+
+/* ── ANIMATE ON SCROLL ── */
+function checkVisible() {
+  document.querySelectorAll('.anim').forEach(function(el) {
+    var rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('load', function() {
+  checkVisible();
+  /* avvia i contatori dopo 400ms */
+  setTimeout(function() {
+    animateCounter('counter-progetti', 48, 1200);
+    animateCounter('counter-dept', 10, 900);
+  }, 400);
+  setTimeout(notifyHeight, 600);
+});
+window.addEventListener('scroll', checkVisible);
+window.addEventListener('resize', function() { checkVisible(); notifyHeight(); });
+
+/* ── IFRAME RESIZE per Google Sites ── */
+function notifyHeight() {
+  var h = document.documentElement.scrollHeight;
+  window.parent.postMessage({ type: 'resize', height: h }, '*');
+  window.parent.postMessage(JSON.stringify({ sentinel: 'amp', type: 'embed-size', height: h }), '*');
+}
+if (window.MutationObserver) {
+  new MutationObserver(notifyHeight).observe(document.body, { childList:true, subtree:true, attributes:true });
+}
+</script>
+</body>
+</html>
