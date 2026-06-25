@@ -60,7 +60,7 @@ html, body {
 
 /* ── HERO ── */
 .hero {
-  min-height: 88vh;
+  min-height: auto; padding-top: clamp(2rem,5vw,4rem); padding-bottom: clamp(2rem,5vw,4rem);
   display: flex; flex-direction: column; justify-content: center;
   padding: clamp(3rem,8vw,6rem) clamp(1.2rem,6vw,4rem);
   position: relative; overflow: hidden;
@@ -587,13 +587,42 @@ window.addEventListener('resize', function() { checkVisible(); notifyHeight(); }
 
 /* ── IFRAME RESIZE per Google Sites ── */
 function notifyHeight() {
-  var h = document.documentElement.scrollHeight;
+  var h = Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight
+  );
+  // Formato 1: Google Sites moderno
   window.parent.postMessage({ type: 'resize', height: h }, '*');
+  // Formato 2: AMP/Sites legacy
   window.parent.postMessage(JSON.stringify({ sentinel: 'amp', type: 'embed-size', height: h }), '*');
+  // Formato 3: iframe resizer library
+  window.parent.postMessage('[iFrameSizer]' + window.name + ':' + h + ':0', '*');
 }
+
+// Notifica ripetuta ogni 500ms per i primi 3 secondi (cattura animazioni CSS)
+var _retries = 0;
+var _retryTimer = setInterval(function() {
+  notifyHeight();
+  _retries++;
+  if (_retries > 6) clearInterval(_retryTimer);
+}, 500);
+
+// Notifica su resize
+window.addEventListener('resize', notifyHeight);
+
+// MutationObserver per variazioni DOM
 if (window.MutationObserver) {
-  new MutationObserver(notifyHeight).observe(document.body, { childList:true, subtree:true, attributes:true });
+  new MutationObserver(function() {
+    setTimeout(notifyHeight, 100);
+  }).observe(document.body, { childList:true, subtree:true, attributes:true });
 }
+
+// Ascolta messaggi da Sites (per debug)
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'getHeight') notifyHeight();
+});
 </script>
 </body>
 </html>
