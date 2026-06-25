@@ -576,46 +576,45 @@ window.addEventListener('resize', function() { checkVisible(); notifyHeight(); }
 
 /* ── IFRAME RESIZE per Google Sites ── */
 function notifyHeight() {
-  var h = Math.max(
-    document.body.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.scrollHeight,
-    document.documentElement.offsetHeight
-  );
-  // Formato 1: Google Sites moderno
+  // Usa getBoundingClientRect dell ultimo elemento per altezza precisa
+  var els = document.body.querySelectorAll('*');
+  var maxBottom = 0;
+  els.forEach(function(el) {
+    var rect = el.getBoundingClientRect();
+    var bottom = rect.bottom + window.scrollY;
+    if (bottom > maxBottom) maxBottom = bottom;
+  });
+  var h = Math.ceil(maxBottom) + 20; // +20px margine di sicurezza
+  
   window.parent.postMessage({ type: 'resize', height: h }, '*');
-  // Formato 2: AMP/Sites legacy
   window.parent.postMessage(JSON.stringify({ sentinel: 'amp', type: 'embed-size', height: h }), '*');
-  // Formato 3: iframe resizer library
-  window.parent.postMessage('[iFrameSizer]' + window.name + ':' + h + ':0', '*');
+  
+  // Aggiorna anche l'altezza del documento stesso
+  document.documentElement.style.height = h + 'px';
+  document.body.style.height = h + 'px';
 }
 
-// Notifica ripetuta ogni 300ms per i primi 6 secondi
-var _retries = 0;
-var _retryTimer = setInterval(function() {
-  notifyHeight();
-  _retries++;
-  if (_retries > 20) clearInterval(_retryTimer);
+// ResizeObserver: il più affidabile
+if (window.ResizeObserver) {
+  var ro = new ResizeObserver(function() { setTimeout(notifyHeight, 50); });
+  ro.observe(document.body);
+}
+
+// Polling iniziale aggressivo
+var _n = 0;
+var _t = setInterval(function() {
+  notifyHeight(); _n++;
+  if (_n > 20) clearInterval(_t);
 }, 300);
 
-// Poi ogni 2 secondi per sempre (cattura lazy load, font, ecc.)
-setTimeout(function() {
-  setInterval(notifyHeight, 2000);
-}, 6000);
+// Poi ogni 2s per sicurezza
+setTimeout(function() { setInterval(notifyHeight, 2000); }, 7000);
 
-// Notifica su resize
 window.addEventListener('resize', notifyHeight);
-
-// MutationObserver per variazioni DOM
-if (window.MutationObserver) {
-  new MutationObserver(function() {
-    setTimeout(notifyHeight, 100);
-  }).observe(document.body, { childList:true, subtree:true, attributes:true });
-}
-
-// Ascolta messaggi da Sites (per debug)
-window.addEventListener('message', function(e) {
-  if (e.data && e.data.type === 'getHeight') notifyHeight();
+window.addEventListener('load', function() {
+  notifyHeight();
+  setTimeout(notifyHeight, 1000);
+  setTimeout(notifyHeight, 3000);
 });
 </script>
 </body>
